@@ -12,6 +12,6 @@ O programa de bolsas da Compass UOL oferece trilhas de treinamento personalizada
 
 ## Autor
 
-Gustavo Queiroz
-Trilha de NOV/2025 até ABR/2026
+Gustavo Queiroz  
+Trilha de NOV/2025 até ABR/2026  
 Integrante do Squad 04 na Fase I e do Squad 01 na Fase 02
