@@ -8,7 +8,7 @@ O programa de bolsas da Compass UOL oferece trilhas de treinamento personalizada
 
 ## Estrutura de Atividades
 
-
+Na pasta [Documentos](https://github.com/gsqxz/pb.compass_QA-AWS-AI/tree/main/Documentos), as sprints e suas respectivas atividades estão divididas em duas sub-pastas: Fase 1 e Fase 2, para facilitar o rastreamento de progresso da trilha.
 
 ## Autor
 
