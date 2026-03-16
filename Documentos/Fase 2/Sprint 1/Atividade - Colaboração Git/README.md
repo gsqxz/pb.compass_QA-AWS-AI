@@ -1,0 +1,4 @@
+# air-compass-fase2-squad1
+Este repositório corresponde à Atividade 2 da Sprint 1 e tem como objetivo colocar em prática os conceitos iniciais de versionamento utilizando Git em um contexto colaborativo. A proposta consiste na criação e organização de um repositório em grupo, no qual cada integrante contribui com uma parte específica de uma história, simulando um fluxo real de trabalho em equipe.
+
+Ao longo da atividade, são exercitados processos fundamentais como criação de branches, commits bem descritos, organização de arquivos, resolução de possíveis conflitos e integração das contribuições em uma versão final consolidada. Além disso, a dinâmica busca reforçar a importância de uma estrutura clara no repositório, padronização de mensagens de commit e colaboração organizada entre os membros do grupo.
