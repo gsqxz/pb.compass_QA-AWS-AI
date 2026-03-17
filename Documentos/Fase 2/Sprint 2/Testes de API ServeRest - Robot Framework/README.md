@@ -21,15 +21,15 @@ O objetivo deste projeto é validar os endpoints da API ServeRest, garantindo qu
 
 1. Clone este repositório:
 
-    git clone https://github.com/seu-usuario/seu-repositorio.git
+        git clone https://github.com/seu-usuario/seu-repositorio.git
 
 2. Acesse o diretório do projeto:
 
-    cd seu-repositorio
+        cd seu-repositorio
 
 3. Instale as dependências:
 
-    pip install -r requirements.txt
+        pip install -r requirements.txt
 
 ---
 
