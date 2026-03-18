@@ -2,13 +2,11 @@
 
 Este repositório contém testes automatizados de API do projeto ServeRest, utilizando o Robot Framework como ferramenta principal de automação.
 
----
 
 ## Objetivo do projeto
 
 O objetivo deste projeto é validar os endpoints da API ServeRest, garantindo que as funcionalidades estejam de acordo com os requisitos esperados, por meio de testes automatizados, confiáveis e reutilizáveis.
 
----
 
 ## Como instalar dependências
 
@@ -21,17 +19,16 @@ O objetivo deste projeto é validar os endpoints da API ServeRest, garantindo qu
 
 1. Clone este repositório:
 
-        git clone https://github.com/seu-usuario/seu-repositorio.git
+        git clone https://github.com/gsqxz/pb.compass_QA-AWS-AI.git
 
 2. Acesse o diretório do projeto:
 
-        cd seu-repositorio
+        cd pb.compass_QA-AWS-AI
 
 3. Instale as dependências:
 
         pip install -r requirements.txt
 
----
 
 ## Como executar os testes
 
@@ -43,7 +40,6 @@ Para executar todos os testes automatizados:
 
     robot tests/nome_do_arquivo.robot
 
----
 
 ## Como visualizar evidências
 
