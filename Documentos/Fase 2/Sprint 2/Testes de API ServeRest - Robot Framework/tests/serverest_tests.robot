@@ -3,6 +3,7 @@ Documentation    Suite de testes da API ServeRest baseada no roteiro Tour do Sup
 ...              Autor: Gustavo Santos Queiroz
 Resource         ../resources/keywords.resource
 Suite Setup      Criar Sessao ServeRest
+Suite Teardown   Limpar Dados da Sessao
 
 *** Test Cases ***
 CT01: Cadastrar Usuário Administrador (Positivo)

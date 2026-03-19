@@ -18,6 +18,7 @@ Cadastrar Usuario Administrador
     ${resposta}    POST On Session    serverest    /usuarios    json=${body}
     Status Should Be    201    ${resposta}
     Dictionary Should Contain Item    ${resposta.json()}    message    Cadastro realizado com sucesso
+    Set Suite Variable    ${ID_USUARIO}    ${resposta.json()}[_id]
 
 Realizar Login e Salvar Token
     ${body}    Create Dictionary    email=${EMAIL_TESTE}    password=teste
@@ -70,3 +71,8 @@ Validar Contrato Basico de Usuarios
     FOR    ${chave}    IN    @{chaves_esperadas}
         Dictionary Should Contain Key    ${primeiro_usuario}    ${chave}
     END
+
+Limpar Dados da Sessao
+    DELETE On Session    serverest    /produtos/${ID_PRODUTO}    headers=${HEADERS_AUTH}    expected_status=any
+    DELETE On Session    serverest    /usuarios/${ID_USUARIO}    expected_status=any
+    Delete All Sessions
