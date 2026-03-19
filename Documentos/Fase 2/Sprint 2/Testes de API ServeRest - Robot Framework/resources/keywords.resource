@@ -53,6 +53,21 @@ Adicionar ao Carrinho e Concluir Compra
     Status Should Be    200    ${resp_concluir}
     Dictionary Should Contain Item    ${resp_concluir.json()}    message    Registro excluído com sucesso
 
+Tentativa de Login com Senha Invalida
+    ${body}    Create Dictionary    email=${EMAIL_TESTE}    password=senha_errada_123
+    
+    ${resposta}    POST On Session    serverest    /login    json=${body}    expected_status=401
+    
+    Dictionary Should Contain Item    ${resposta.json()}    message    Email e/ou senha inválidos
+
+Cadastrar Produto com Preco Negativo
+    ${headers}    Create Dictionary    Authorization=${TOKEN_AUTH}
+    ${body}    Create Dictionary    nome=Produto Negativo    preco=-50    descricao=Teste Negativo    quantidade=10
+    
+    ${resposta}    POST On Session    serverest    /produtos    json=${body}    headers=${headers}    expected_status=400
+    
+    Dictionary Should Contain Item    ${resposta.json()}    preco    preco deve ser um número positivo
+
 Validar Contrato Basico de Usuarios
     ${resposta}    GET On Session    serverest    /usuarios
     Status Should Be    200    ${resposta}

@@ -22,18 +22,13 @@ CT04: Fluxo de Carrinho (Adicionar e Concluir)
     [Tags]    funcional    positivo
     Adicionar ao Carrinho e Concluir Compra
 
-CT05: Login com Senha Inválida
+CT05: Login com Senha Invalida
     [Tags]    seguranca    negativo
-    ${body}    Create Dictionary    email=${EMAIL_TESTE}    password=senha_errada_123
-    ${resposta}    POST On Session    serverest    /login    json=${body}    expected_status=401
-    Dictionary Should Contain Item    ${resposta.json()}    message    Email e/ou senha inválidos
+    Tentativa de Login com Senha Invalida
 
-CT06: Cadastrar Produto com Preço Negativo
+CT06: Cadastrar Produto com Preco Negativo
     [Tags]    regra_negocio    negativo
-    ${headers}    Create Dictionary    Authorization=${TOKEN_AUTH}
-    ${body}    Create Dictionary    nome=Produto Negativo    preco=-50    descricao=Teste    quantidade=10
-    ${resposta}    POST On Session    serverest    /produtos    json=${body}    headers=${headers}    expected_status=400
-    Dictionary Should Contain Item    ${resposta.json()}    preco    preco deve ser um número positivo
+    Cadastrar Produto com Preco Negativo
 
 CT07: Validar Contrato de Lista de Usuários
     [Tags]    contrato
