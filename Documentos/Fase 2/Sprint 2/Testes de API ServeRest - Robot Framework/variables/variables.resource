@@ -1,2 +1,7 @@
 *** Variables ***
 ${BASE_URL}    https://serverest.dev
+${EMAIL_TESTE}
+${NOME_PRODUTO}
+${TOKEN_AUTH}
+${HEADERS_AUTH}
+${ID_PRODUTO}
