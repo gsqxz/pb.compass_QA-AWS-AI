@@ -34,3 +34,15 @@ CT06: Cadastrar Produto com Preco Negativo (Negativo)
 CT07: Validar Contrato de Lista de Usuários (Validação de Contrato)
     [Tags]    contrato
     Validar Contrato Basico de Usuarios
+
+################### BUGS ###################
+
+CT08: Validar Cadastro de Produto com Preco Decimal
+    [Documentation]    O comportamento esperado é aceitar valores decimais para o preço.
+    [Tags]    bug    produto
+    Validar Aceitacao de Preco Decimal
+
+CT09: Validar Rejeicao de Cadastro com Email Invalido
+    [Documentation]    O comportamento esperado é rejeitar emails com caracteres inválidos.
+    [Tags]    bug    usuario
+    Validar Rejeicao de Email Invalido

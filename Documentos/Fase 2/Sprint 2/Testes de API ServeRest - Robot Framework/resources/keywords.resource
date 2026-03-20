@@ -72,7 +72,18 @@ Validar Contrato Basico de Usuarios
         Dictionary Should Contain Key    ${primeiro_usuario}    ${chave}
     END
 
+Validar Aceitacao de Preco Decimal
+    ${body}    Create Dictionary    nome=Produto Decimal ${NOME_PRODUTO}    preco=19000.99    descricao=RTX 5090    quantidade=10
+    ${resposta}    POST On Session    serverest    /produtos    json=${body}    headers=${HEADERS_AUTH}    expected_status=201
+
+Validar Rejeicao de Email Invalido
+    ${body}    Create Dictionary    nome=Teste Email Ruim    email=#emailinvalido🚀@qa.com    password=teste    administrador=true
+    ${resposta}    POST On Session    serverest    /usuarios    json=${body}    expected_status=any
+    Set Suite Variable    ${ID_EMAIL_INVALIDO}    ${resposta.json()}[_id]
+    Status Should Be    400    ${resposta}
+
 Limpar Dados da Sessao
     DELETE On Session    serverest    /produtos/${ID_PRODUTO}    headers=${HEADERS_AUTH}    expected_status=any
     DELETE On Session    serverest    /usuarios/${ID_USUARIO}    expected_status=any
+    DELETE On Session    serverest    /usuarios/${ID_EMAIL_INVALIDO}    expected_status=any
     Delete All Sessions
