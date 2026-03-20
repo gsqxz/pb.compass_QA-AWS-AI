@@ -1,0 +1,89 @@
+*** Settings ***
+Library     RequestsLibrary
+Library     String
+Library     Collections
+Resource    ../variables/variables.resource
+
+*** Keywords ***
+Criar Sessao ServeRest
+    Create Session    serverest    ${BASE_URL}
+
+Gerar Dados Dinamicos
+    ${random_str}    Generate Random String    8    [LOWER]
+    Set Suite Variable    ${EMAIL_TESTE}    tour_${random_str}@qa.com
+    Set Suite Variable    ${NOME_PRODUTO}   Produto Automacao ${random_str}
+
+Cadastrar Usuario Administrador
+    ${body}    Create Dictionary    nome=QA Tester    email=${EMAIL_TESTE}    password=teste    administrador=true
+    ${resposta}    POST On Session    serverest    /usuarios    json=${body}
+    Status Should Be    201    ${resposta}
+    Dictionary Should Contain Item    ${resposta.json()}    message    Cadastro realizado com sucesso
+    Set Suite Variable    ${ID_USUARIO}    ${resposta.json()}[_id]
+
+Realizar Login e Salvar Token
+    ${body}    Create Dictionary    email=${EMAIL_TESTE}    password=teste
+    ${resposta}    POST On Session    serverest    /login    json=${body}
+    Status Should Be    200    ${resposta}
+    ${token}    Set Variable    ${resposta.json()}[authorization]
+    ${headers}    Create Dictionary    Authorization=${token}
+    Set Suite Variable    ${HEADERS_AUTH}    ${headers}
+
+Cadastrar Produto no Estoque
+    ${body}    Create Dictionary    nome=${NOME_PRODUTO}    preco=100    descricao=Mouse Gamer    quantidade=50
+    ${resposta}    POST On Session    serverest    /produtos    json=${body}    headers=${HEADERS_AUTH}
+    Status Should Be    201    ${resposta}
+    Set Suite Variable    ${ID_PRODUTO}    ${resposta.json()}[_id]
+
+Adicionar ao Carrinho e Concluir Compra
+    # Adicionar ao Carrinho
+    ${produto_json}    Create Dictionary    idProduto=${ID_PRODUTO}    quantidade=1
+    ${lista_produtos}    Create List    ${produto_json}
+    ${body_carrinho}    Create Dictionary    produtos=${lista_produtos}
+    
+    ${resp_carrinho}    POST On Session    serverest    /carrinhos    json=${body_carrinho}    headers=${HEADERS_AUTH}
+    Status Should Be    201    ${resp_carrinho}
+    
+    # Concluir Compra
+    ${resp_concluir}    DELETE On Session    serverest    /carrinhos/concluir-compra    headers=${HEADERS_AUTH}
+    Status Should Be    200    ${resp_concluir}
+    Dictionary Should Contain Item    ${resp_concluir.json()}    message    Registro excluído com sucesso
+
+Tentativa de Login com Senha Invalida
+    ${body}    Create Dictionary    email=${EMAIL_TESTE}    password=senha_errada_123
+    ${resposta}    POST On Session    serverest    /login    json=${body}    expected_status=401
+    Dictionary Should Contain Item    ${resposta.json()}    message    Email e/ou senha inválidos
+
+Cadastrar Produto com Preco Negativo
+    ${headers}    Create Dictionary    Authorization=${HEADERS_AUTH}
+    ${body}    Create Dictionary    nome=Produto Negativo    preco=-50    descricao=Teste Negativo    quantidade=10
+    ${resposta}    POST On Session    serverest    /produtos    json=${body}    headers=${HEADERS_AUTH}    expected_status=400
+    Dictionary Should Contain Item    ${resposta.json()}    preco    preco deve ser um número positivo
+
+Validar Contrato Basico de Usuarios
+    ${resposta}    GET On Session    serverest    /usuarios
+    Status Should Be    200    ${resposta}
+    
+    Dictionary Should Contain Key    ${resposta.json()}    quantidade
+    Dictionary Should Contain Key    ${resposta.json()}    usuarios
+    
+    ${primeiro_usuario}    Set Variable    ${resposta.json()}[usuarios][0]
+    @{chaves_esperadas}    Create List    nome    email    password    administrador    _id
+    FOR    ${chave}    IN    @{chaves_esperadas}
+        Dictionary Should Contain Key    ${primeiro_usuario}    ${chave}
+    END
+
+Validar Aceitacao de Preco Decimal
+    ${body}    Create Dictionary    nome=Produto Decimal ${NOME_PRODUTO}    preco=19000.99    descricao=RTX 5090    quantidade=10
+    ${resposta}    POST On Session    serverest    /produtos    json=${body}    headers=${HEADERS_AUTH}    expected_status=201
+
+Validar Rejeicao de Email Invalido
+    ${body}    Create Dictionary    nome=Teste Email Ruim    email=#emailinvalido🚀@qa.com    password=teste    administrador=true
+    ${resposta}    POST On Session    serverest    /usuarios    json=${body}    expected_status=any
+    Set Suite Variable    ${ID_EMAIL_INVALIDO}    ${resposta.json()}[_id]
+    Status Should Be    400    ${resposta}
+
+Limpar Dados da Sessao
+    DELETE On Session    serverest    /produtos/${ID_PRODUTO}    headers=${HEADERS_AUTH}    expected_status=any
+    DELETE On Session    serverest    /usuarios/${ID_USUARIO}    expected_status=any
+    DELETE On Session    serverest    /usuarios/${ID_EMAIL_INVALIDO}    expected_status=any
+    Delete All Sessions
