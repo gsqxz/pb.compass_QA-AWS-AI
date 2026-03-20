@@ -27,17 +27,27 @@ O objetivo deste projeto é validar os endpoints da API ServeRest, garantindo qu
 
 3. Instale as dependências:
 
-        pip install robotframework
-    
-        pip install robotframework-requests
+   **Robot Framework**
+   ```bash
+   pip install robotframework
+   ```
+
+   **RequestsLibrary**
+   ```bash
+   pip install robotframework-requests
+   ```
 
 ## Como executar os testes
 
 ### Executar todos os testes automatizados:
 
 CASO ESTEJA NO DIRETÓRIO RAIZ DO PROJETO:
-    robot -d .\results\ .\tests\serverest_tests.robot
-É também possível executar os testes rapidamente, diretamente no código, com a instalação do plugin de Robot Framework para VS Code.
+
+```bash
+robot -d .\results\ .\tests\serverest_tests.robot
+```
+
+É também possível executar os testes rapidamente, diretamente no código, com a instalação do plugin de [Robot Framework para VS Code](https://marketplace.visualstudio.com/items?itemName=d-biehl.robotcode).
 
 ### Executar testes específicos
 
