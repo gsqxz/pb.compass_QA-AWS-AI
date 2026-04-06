@@ -71,9 +71,9 @@ Apenas o status 200 é verificado. O campo `authorization` é acessado diretamen
 
 | Pontos positivos | | Pontos negativos |
 |---|---|---|
-| Code Review Rápido | | Desconhecimento das regras de negócio |
-| Identificação de Riscos | | Limitações dos planos de modelo |
-| Sugestões de Melhoria | | Alimentação de contexto detalhado necessário |
-| Feedback Imediato | | Risco de efeito colateral |
-| Limpeza e Refatoração | | Alucinação com bibliotecas |
-| Tratamento de Erros | | Impossibilidade de selecionar partes específicas do código |
+| Code Review Rápido | Desconhecimento das regras de negócio |
+| Identificação de Riscos | Limitações dos planos de modelo |
+| Sugestões de Melhoria | Alimentação de contexto detalhado necessário |
+| Feedback Imediato | Risco de efeito colateral |
+| Limpeza e Refatoração | Alucinação com bibliotecas |
+| Tratamento de Erros | Impossibilidade de selecionar partes específicas do código |
