@@ -69,8 +69,8 @@ Apenas o status 200 é verificado. O campo `authorization` é acessado diretamen
 
 ## Avaliação do uso de Amazon Q
 
-| Pontos positivos | | Pontos negativos |
-|---|---|---|
+| Pontos positivos | Pontos negativos |
+|---|---|
 | Code Review Rápido | Desconhecimento das regras de negócio |
 | Identificação de Riscos | Limitações dos planos de modelo |
 | Sugestões de Melhoria | Alimentação de contexto detalhado necessário |
