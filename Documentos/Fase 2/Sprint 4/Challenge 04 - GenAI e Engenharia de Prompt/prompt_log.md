@@ -227,5 +227,7 @@ Analise também a estrutura do diretório.
 ```
 
 * **Resposta da IA:** A IA entregou um relatório de revisão detalhado, identificando riscos de acoplamento e efeito dominó, asserção fraca de contrato e hardcode oculto. O relatório incluiu trechos de código refatorados para cada risco encontrado, além de sugestões para melhorar a estrutura do diretório.
-* **Ajuste/Validação manual:** Analisei o relatório de revisão para garantir que as correções propostas pela IA estão alinhadas com as melhores práticas de automação e com a documentação oficial do ServeRest. Implementei as correções sugeridas e validei a execução dos testes para garantir que eles estejam funcionando conforme esperado.
-* **Critérios de validação usados:** Análise de risco de falsos-positivos (testes que passam mas não testam direito) e validação da estabilidade da suíte garantindo que dados dinâmicos foram aplicados corretamente.
+* **Ajuste/Validação manual:** Analisei o relatório de revisão para garantir que as correções propostas pela IA estão alinhadas com as melhores práticas de automação e com a documentação oficial do ServeRest. Implementei as correções sugeridas e validei a execução dos testes para garantir que eles estejam funcionando conforme esperado. Ainda assim, ao finalmente executar os testes pelo terminal do VS Code, todos os testes falharam e fui atrás dos erros. A IA tinha cometido um erro fatal: ela não tinha declarado a Library Collections no arquivo base.resource, o que estava causando os erros e tornando os testes impraticáveis. Corriji a falha.
+* **Critérios de validação usados:** Análise de risco de falsos-positivos (testes que passam mas não testam direito) e validação da estabilidade da suíte garantindo que dados dinâmicos foram aplicados corretamente. Execução dos testes.
+
+## Prompt 09: Automação com GitHub Actions

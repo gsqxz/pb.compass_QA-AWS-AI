@@ -3,6 +3,7 @@ Documentation    Arquivo de configuração central e Setup da automação da API
 ...              Este arquivo deve ser importado em todos os arquivos de teste.
 
 Library          RequestsLibrary
+Library          Collections
 
 *** Variables ***
 # Baseado na lista de servers documentada no swagger.json
