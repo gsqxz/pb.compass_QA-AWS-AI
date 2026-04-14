@@ -3,7 +3,7 @@ name: Execução de Testes Robot - ServeRest
 # 1. QUANDO essa automação deve rodar?
 on:
   push:
-    branches: [ "main", "master" ] # Roda sempre que houver um push na branch principal
+    branches: [ "main", "master", "challenge04-genai" ] # Roda sempre que houver um push na branch principal
   workflow_dispatch:               # Cria um botão no GitHub para você rodar manualmente quando quiser
 
 # 2. O QUE deve ser feito?
