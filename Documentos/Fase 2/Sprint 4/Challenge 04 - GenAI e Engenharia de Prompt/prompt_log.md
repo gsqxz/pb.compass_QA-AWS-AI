@@ -231,3 +231,16 @@ Analise também a estrutura do diretório.
 * **Critérios de validação usados:** Análise de risco de falsos-positivos (testes que passam mas não testam direito) e validação da estabilidade da suíte garantindo que dados dinâmicos foram aplicados corretamente. Execução dos testes.
 
 ## Prompt 09: Automação com GitHub Actions
+* **Objetivo do prompt:** Obter uma explicação didática sobre o funcionamento do GitHub Actions e solicitar um guia passo a passo para automatizar a execução da suíte do Robot Framework e salvar os relatórios.
+* **Contexto fornecido:** Histórico completo dos testes anteriores, a estrutura do projeto já definida e a persona de QA Sênior para uma explicação clara e didática.
+* **Prompt final:**
+
+```text
+Aja como um Engenheiro de QA Sênior e meu mentor. Sou iniciante e quero aprender a automatizar a execução dos meus testes do Robot Framework pelo GitHub Actions, mas nunca fiz isso antes.
+
+Me explique de forma bem didática como essa ferramenta funciona e me guie com o passo a passo completo: me diga quais pastas e arquivos eu devo criar no meu projeto (como o arquivo de dependências) e me forneça o código exato da automação. A única exigência técnica para o código é que ele deve sempre salvar e me permitir baixar os relatórios log.html e report.html no final da execução, mesmo que algum teste venha a falhar.
+```
+
+* **Resposta da IA:** A IA explicou o funcionamento do GitHub Actions utilizando uma analogia com um "robô de cozinha" que executa tarefas automaticamente. Ela forneceu um guia passo a passo para configurar o GitHub Actions, incluindo a criação de um arquivo de workflow (.yml) na pasta .github/workflows, a instalação das dependências necessárias para o Robot Framework e o código exato para automatizar a execução dos testes, garantindo que os relatórios log.html e report.html sejam salvos e disponibilizados para download mesmo em caso de falhas.
+* **Ajuste/Validação manual:** Implementei o código fornecido pela IA no meu repositório do GitHub e configurei o workflow conforme as instruções. Executei o workflow para garantir que os testes rodassem corretamente e que os relatórios fossem gerados e disponibilizados para download conforme esperado.
+* **Critérios de validação usados:** Verificação da execução bem-sucedida do workflow no GitHub Actions, garantindo que os testes do Robot Framework sejam executados e que os relatórios log.html e report.html sejam gerados e disponibilizados para download, mesmo em caso de falhas nos testes.
