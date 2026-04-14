@@ -2,7 +2,7 @@
 Documentation    Testes de Contrato da API ServeRest para garantir integridade estrutural.
 ...              Referência técnica única: arquivo swagger.json fornecido.
 Resource         ../resources/base.resource
-Library          FakerLibrary
+Library          FakerLibrary    locale=pt_BR
 Test Setup       Criar Sessao ServeRest
 
 *** Test Cases ***
